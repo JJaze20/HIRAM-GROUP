@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+    <title>Animated Select</title>
+    <link rel="stylesheet" href="Stylechoose.css">
+</head>
+<body id="dBody" onload="loadData();">
+
+<img id="image" src="Hiram_Logo1.png" width="270" height="150">
+
+<div class="center">
+    <h1>Welcome!</h1>
+    <form onsubmit="return storeData(event);">
+        <div class="txt_field">
+            <img src="bordude.png" class="borrower" onclick="switchPage('Hiram2.html')">
+            <img src="idguy.png" class="lender" onclick="switchPage('Hiram2.html')">
+            <span></span>
+        </div>
+        <div class="txt_field">
+            <span></span>
+        </div>
+        <div class="roletxt">
+            <a><b>Borrower</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Lender</b></a>
+        </div>
+        <div class="signup_link">
+            <a>Please Select Role</a>
+        </div>
+    </form>
+</div>
+
+<img src="Wheel.png" class="colorwheel" onclick="changeColor()">
+
+<script>
+function changeColor() {
+    var red = Math.random() * 255;
+    var green = Math.random() * 255;
+    var blue = Math.random() * 255;
+
+    var dColor = "rgb(" + Math.floor(red) + "," + Math.floor(green) + "," + Math.floor(blue) + ")";
+    document.getElementById('dBody').style.backgroundColor = dColor;
+}
+
+// Redirects to the specified local HTML page
+function switchPage(pageName) {
+    window.location.href = pageName; 
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="color-scheme" content="only light">
+    <title>Animated Register</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body id="dBody" onload="loadData();">
+
+<img id="image" src="Hiram_Logo1.png" width="270" height="150">
+
+<div class="center">
+    <h1>Sign up</h1>
+    <form onsubmit="storeData(event);">
+        <div class="txt_field">
+            <input type="text" id="Username" placeholder="Username" required />
+            <span></span>
+            <label>Username</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" id="Password" placeholder="Password" required />
+            <span></span>
+            <label>Password</label>
+        </div>
+        
+        <!-- Dropdown for Role Selection -->
+        <div class="options">
+            <label for="role">Select your role:</label>
+            <select id="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="lender">Lender</option>
+                <option value="borrower">Borrower</option>
+            </select>
+        </div>
+
+        <div class="signup_link">
+            <input type="submit" value="Sign up" />
+        </div>
+    </form>
+</div>
+
+<img src="Wheel.png" class="colorwheel" onclick="changeColor()">
+
+<script>
+function changeColor() {
+    var red = Math.random() * 255;
+    var green = Math.random() * 255;
+    var blue = Math.random() * 255;
+
+    var dColor = "rgb(" + red + "," + green + "," + blue + ")";
+    document.getElementById('dBody').style.backgroundColor = dColor;
+}
+
+function loadData() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    if (users.length > 0) {
+        const latestUser = users[users.length - 1]; // Get the most recent user
+        document.getElementById('Username').value = latestUser.username; // Set username field
+        // Do not autofill the password for security reasons
+        document.getElementById('Password').value = ''; // Clear the password field
+    }
+}
+
+function storeData(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get username, password, and role
+    const username = document.getElementById('Username').value; 
+    const password = document.getElementById('Password').value;
+    const role = document.getElementById('role').value;
+
+    // Check for existing users in Local Storage
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if the username already exists
+    const userExists = users.some(user => user.username === username);
+
+    if (userExists) {
+        alert("User already exists! Please try again.");
+        return; // Exit the function without registering the new user
+    }
+
+    // Create a user object
+    const user = { username: username, password: password, role: role };
+
+    // Add the new user to the array
+    users.push(user);
+
+    // Store the updated array back to Local Storage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Redirect to HIRAM-MAIN.html based on role
+    if (role === 'lender') {
+        window.location.href = 'HIRAM-MAIN-ADMIN.html';
+    } else if (role === 'borrower') {
+        window.location.href = 'HIRAM-MAIN.html';
+    }
+}
+</script>
+</body>
+</html>
+

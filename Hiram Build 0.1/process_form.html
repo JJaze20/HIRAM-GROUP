@@ -1,0 +1,20 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Initialize an array to store the user data
+    $userData = [];
+
+    // Get the username and password from the form
+    $userData['username'] = htmlspecialchars($_POST['username']);
+    $userData['password'] = htmlspecialchars($_POST['password']);
+
+    // Here you could store $userData in a database or a file if needed
+
+    // Redirect to HIRAM-MAIN.html in the same directory
+    header("Location: ./HIRAM-MAIN.html");
+    exit();
+} else {
+    // Redirect back to the form if the request method is not POST
+    header("Location: ./form.html");
+    exit();
+}
+?>

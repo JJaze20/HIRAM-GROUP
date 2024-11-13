@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+        <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="STYLE - ADMIN.css"/>
+    </head>
+    <body>
+    
+    <!--Main container-->
+    <div class="parent"> 
+
+    <!--Logo-->
+    <div class="logo-Border"></div>
+    <img src="Hiram_Logo1.png" class="Logo">     
+
+    <!--Header elements-->
+    <div class="hero">
+		<nav>
+			<img src="Hiram_Logo1.png" class="logoHead ">
+            &nbsp &nbsp
+            <div class="welcome"> &nbsp Welcome</div>
+            <div class="admin"> &nbsp Admin</div>
+			<ul>
+				<li><a href="#" onclick="togglePop()" class="about">About</a></li>
+			</ul>
+			<img src="profile.png" class="user-pic" onclick="toggleMenu()"> 
+		
+    <!--Dropdown menu for profile-->		
+		<div class="sub-menu-wrap" id="subMenu">
+		<div class="sub-menu">
+		<div class="user-info">
+		<img src="profile.png">
+		<h3> Hiram Borrowing </h3>
+		</div>
+		<hr>
+		
+		<a href="#" class="sub-menu-link">
+			<img src="profile.png" onclick="togglePop2()">
+			<p onclick="togglePop2()"> Edit Profile</p>
+			<span>></span>
+		</a>
+
+		<a href="#" class="sub-menu-link">
+			<img src="help.jpg" onclick="togglePop1()">
+			<p onclick="togglePop1()"> Help & Support</p>
+			<span>></span>
+		</a>
+		<a href="#" class="sub-menu-link">
+			<img src="logout.png" onclick="switchPage('Hiram2.html')">
+			<p onclick="switchPage('Hiram2.html')"> Logout</p>
+			<span>></span>
+		</a>
+		</div>
+		</div>
+		</nav>
+	</div>
+	
+	<!-- Pop-up for About page -->
+	<div class="aboutPop" id="popup"> 
+    <div class="overlay" onclick="togglePop()"> </div>
+    <div class="content">
+        <div class="close1" onclick="togglePop()"> &times; </div>
+        <h1> About HIRAM </h1>
+        <br>
+        <p>
+            ❝At HIRAM, we aim to foster a supportive and resourceful environment by encouraging sharing and collaboration among students.❞<br>
+            Our goal is to make borrowing easy, efficient, and accessible for everyone.<br>
+            <br>
+            <b>Why Choose HIRAM?</b> <br>
+			<br>
+            <b>① User-Friendly:</b> Our platform is designed with simplicity in mind, borrow and lend items effortlessly. <br>
+            <br>
+            <b>② Community Driven:</b> Connect with classmates and faculty who are ready to lend a helping hand. <br>
+            <br>
+		
+            <b>③ Sustainable Sharing:</b> Reduce waste and promote sustainability by borrowing instead of buying. <br>
+            <br>
+            <b><i>"Join us in creating a more connected and resourceful school community. Start borrowing today with HIRAM!"</i></b>
+        </p>
+		<ul class="slideshow">  
+            <li style="background-image: url('Hiram_element1.jpg');"></li>
+			<li style="background-image: url('Hiram_handing.jpg');"></li>
+			<li style="background-image: url('Hiram_phone.jpg');"></li>
+            <li></li>
+        </ul>
+ 
+    </div>
+</div>
+	
+	<!-- Pop-up for Help and support page -->
+	<div class="learnPop" id="popup1">
+  <div class="overlay1" onclick="togglePop1()"></div>
+  <div class="content1">
+    <div class="close2" onclick="togglePop1()">&times;</div>
+    <h1 style="font-size: 36px; font-weight: bold;">Need Help?</h1>
+    <p style="font-size: 24px; margin-bottom: 20px;">
+      If you have any questions or need assistance, please reach out to the following contacts:
+    </p>
+    <ul style="font-size: 22px; list-style: none; padding: 0; margin: 0;">
+      <li style="margin-bottom: 15px;">
+        <strong>Technical Support:</strong>
+        <span>Robert Andulana - </span>
+        <a href="mailto:rpandulana.sacisd@gmail.com">rpandulana.sacisd@gmail.com</a>
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong>Technical Support:</strong>
+        <span>Jeric Ryan Caday - </span>
+        <a href="mailto:jericryancaday247@gmail.com">jericryancaday247@gmail.com</a>
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong>Account Issues:</strong>
+        <span>Louise Sofe Ayco - </span>
+        <a href="mailto:LouiseSofeAyco@gmail.com">LouiseSofeAyco@gmail.com</a>
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong>General Inquiries:</strong>
+        <span>Jero Joash Betonio - </span>
+        <a href="mailto:jazebetonio@gmail.com">jazebetonio@gmail.com</a>
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong>Phone:</strong> +639 9521 793 47
+      </li>
+      <li>
+        <strong>Email:</strong> 
+        <a href="mailto:support@hiram.edu">support@hiram.edu</a>
+      </li>
+    </ul>
+    <p style="font-size: 24px; margin-top: 20px;">We are here to help!</p>
+  </div>
+</div>
+
+    <!-- Pop-up for Edit profile page -->
+	<div class="editPop" id="popup2"> 
+	<div class="overlay2" onclick="togglePop2()"> </div>
+	<div class="content2">
+	<div class="close3" onclick="togglePop2()"> &times; </div>
+	<h1> Edit Profile </h1>
+    <img src="profile.png" onclick="changeImage()" class="changePic">
+    <div class="UserName">
+        <div class="entry">
+            <input type="text" class="input" required>
+            <div class="label">Name:</div>
+        </div>
+    </div>
+
+    <div class="IDnum">
+        <div class="entry">
+            <input type="text" class="input" required>
+            <div class="label">ID number: </div>
+        </div>
+        </div>
+
+    <div class="Department">
+        <div class="entry">
+            <input type="text" class="input" required>
+            <div class="label">Department:</div>
+        </div>
+     </div>
+
+    <div class="Course">
+        <div class="entry">
+            <input type="text" class="input" required>
+            <div class="label">Course and Year:</div>
+        </div>
+	</div>
+	</div>
+	
+    <!--Main Options-->     
+    <button class="Item1" onclick="togglePop4('sports')">
+	<img src="sport.png" class="sportPic"> <br> SPORTS GEARS
+	</button>
+
+    <button class="Item2" onclick="togglePop4('school')">
+	<img src="school.png" class="schoolPic"> <br> SCHOOL ITEMS
+	</button>
+	
+    <button class="Item3" onclick="togglePop4('canteen')">
+	<img src="canteen.png" class="canteenPic"> <br> CANTEEN UTENSILS
+	</button>
+    
+    <button class="Item4" onclick="togglePop4('library')">
+	<img src="library.png" class="libraryPic"> <br> <br>LIBRARY EQUIPMENTS
+	</button>
+     
+    <!--Admin Option-->
+    <img src="lostmydawg.png" class="bag" onclick="togglePop3()">
+    
+    <div class="adminLend" id="Pop"> 
+        <div class="overlay3" onclick="togglePop3()"> </div>
+        <div class="content3">
+        <div class="close3" onclick="togglePop3()"> &times; </div>
+        <h1> INVENTORY </h1>
+        
+        <div class="dropdown1">
+            CATEGORY
+            <div class="select1" onclick="toggleDropdown()">
+                <span class="selected1">SPORTS</span>
+                <div class="caret1"></div>
+            </div>
+            <ul class="menu1" id="menu1">
+                <li onclick="selectOption('SPORTS')">SPORTS</li>
+                <li onclick="selectOption('LIBRARY')">LIBRARY</li>
+                <li onclick="selectOption('SCHOOL')">SCHOOL</li>
+                <li onclick="selectOption('CANTEEN')">CANTEEN</li>
+            </ul>
+        </div>
+
+        <div class="add">
+            <div class="entry">
+                <input type="text" class="inventoryInput" required>
+                <div class="label1">Add Item</div>
+            </div>
+         </div>
+
+         <div class="quantity">
+            <div class="entry">
+                <input type="text" class="inventoryInput" required>
+                <div class="label1">Enter Quantity of Item</div>
+            </div>
+         </div>
+
+         <div class="Remove">
+            <div class="entry">
+                <input type="text" class="inventoryInput" required>
+                <div class="label1">Remove Item</div>
+            </div>
+         </div>
+         <button class="view" onclick="inventory()"> View Inventory </button>
+         <button class="update" onclick="updated()"> Update Inventory </button>
+        </div>
+        </div>
+    </div>
+
+	<!-- layout of pop-up window for borrowing requests-->
+    <div class="Requests" id="Pop1"> 
+        <div class="overlay4" onclick="togglePop4()"> </div>
+        <div class="content4">
+            <div class="close4" onclick="togglePop4()"> &times; </div>
+            <h1> REQUESTS </h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated here dynamically -->
+                </tbody>
+            </table>    
+        </div>
+    </div>
+
+<script>
+//About pop-up script
+function togglePop(){
+ document.getElementById("popup").classList.toggle("active");
+}
+
+//Learn pop-up script
+function togglePop1(){
+ document.getElementById("popup1").classList.toggle("active1");
+}
+
+//Edit Profile pop-up script
+function togglePop2(){
+ document.getElementById("popup2").classList.toggle("active2");
+}
+
+//Borrorwing requests pop-up script
+// Sample data for requests
+const requests = {
+    sports: [
+        { item: 'Badminton Racket', user: 'John Doe' },
+        { item: 'Basketball', user: 'Jane Smith' },
+        { item: 'Volleyball', user: 'Mark Johnson' }
+    ],
+    canteen: [
+        { item: 'Plate', user: 'Alice Brown' },
+        { item: 'Cup', user: 'Bob White' },
+        { item: 'Fork', user: 'Charlie Black' }
+    ],
+    school: [
+        {item: 'Scientific Calculator', user: 'Carl Johnson'},
+        {item: 'Coloring Kit', user: 'Abudabi Yusef'},
+        {item: 'Meter Stick', user: 'Micheal De-Santos'}
+    ],
+    library: [
+        {item: 'HDMI to VGA dongle', user: 'Niko Belic'},
+        {item: 'BT Speaker', user: 'Corvo Atano'},
+        {item: 'Projector', user: 'Nick Gustov'}
+    ],
+};
+
+function togglePop4(category) {
+    const popUp = document.getElementById("Pop1");
+    popUp.classList.toggle("active4");
+    updateRequestsTable(category);
+}
+
+function updateRequestsTable(category) {
+    const tableBody = document.querySelector('#Pop1 tbody');
+    tableBody.innerHTML = ''; // Clear existing table rows
+
+    const categoryRequests = requests[category] || [];
+
+    categoryRequests.forEach(request => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${request.item}</td>
+            <td>${request.user}</td>
+            <td>
+                <button onclick="acceptRequest('${request.item}', '${request.user}')">Accept</button>
+                <button onclick="declineRequest('${request.item}', '${request.user}')">Decline</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+//Inventory form pop-up script
+function togglePop3(){
+ document.getElementById("Pop").classList.toggle("active3");
+}
+
+function toggleDropdown() {
+    const menu = document.getElementById('menu1');
+    menu.classList.toggle('active'); // Toggle the visibility of the dropdown
+}
+
+function selectOption(option) {
+    const selected = document.querySelector('.selected1');
+    selected.innerText = option; // Update the selected option
+    toggleDropdown(); // Close the dropdown after selection
+}
+
+function updated() {
+    alert("Inventory has been updated.");
+}
+
+// Close dropdown if clicked outside
+window.onclick = function(event) {
+    const menu = document.getElementById('menu1');
+    if (!event.target.matches('.select1') && menu.classList.contains('active')) {
+        menu.classList.remove('active'); // Close the dropdown if clicking outside
+    }
+}
+
+//switch page bruh
+function switchPage(pageName) {
+    window.location.href = pageName; 
+}
+
+
+//Profile header script
+let subMenu = document.getElementById("subMenu");
+	
+	function toggleMenu(){
+		subMenu.classList.toggle("open-menu");
+}
+</script>
+</html> 

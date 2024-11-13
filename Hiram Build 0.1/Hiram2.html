@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+    <title>Animated Login</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body id="dBody" onload="loadData();">
+
+<img id="image" src="Hiram_Logo1.png" width="270" height="150">
+
+<div class="center">
+    <h1>Sign in</h1>
+    <form onsubmit="return storeData(event);">
+        <div class="txt_field">
+            <input type="text" id="Username" placeholder="Username" required />
+            <span></span>
+            <label>Username</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" id="Password" placeholder="Password" required />
+            <span></span>
+            <label>Password</label>
+        </div>
+        
+        <input type="submit" value="Sign in" />
+        <div class="signup_link">
+            <p>No Account?</p>
+            <a href="#" onclick="switchPage('Hiramregister.html')">click me!</a>
+        </div>
+    </form>
+</div>
+
+<img src="Wheel.png" class="colorwheel" onclick="changeColor()">
+
+<script>
+function changeColor() {
+    var red = Math.random() * 255;
+    var green = Math.random() * 255;
+    var blue = Math.random() * 255;
+
+    var dColor = "rgb(" + red + "," + green + "," + blue + ")";
+    document.getElementById('dBody').style.backgroundColor = dColor;
+}
+
+function loadData() {
+    // Retrieve data from local storage and set the input fields
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    if (users.length > 0) {
+        const latestUser = users[users.length - 1]; // Get the most recent user
+        document.getElementById('Username').value = latestUser.username; // Set username field
+        document.getElementById('Password').value = latestUser.password; // Set password field
+    }
+}
+
+function switchPage(pageName) {
+    window.location.href = pageName; 
+}
+
+function storeData(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get username and password
+    const username = document.getElementById('Username').value; 
+    const password = document.getElementById('Password').value;
+
+    // Check stored users
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Check if the entered username and password match any stored user
+    const user = users.find(user => user.username === username && user.password === password);
+    
+    if (user) {
+        // Redirect based on role
+        if (user.role === 'lender') {
+            window.location.href = 'HIRAM-MAIN-ADMIN.html';
+        } else if (user.role === 'borrower') {
+            window.location.href = 'HIRAM-MAIN.html';
+        }
+    } else {
+        // If no match, alert the user and redirect to registration
+        alert("Invalid username or password. Please try again.");
+        switchPage("Hiramregister.html");
+    }
+}
+</script>
+</body>
+</html>

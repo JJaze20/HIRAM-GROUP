@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+        <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="STYLE.css"/>
+    </head>
+    <body>
+    
+    <!--Main container-->
+    <div class="parent"> 
+  
+    <!--Header elements-->
+    <div class="hero">
+		<nav>
+			<div class="LogoText"> HIRAM </div>
+			<ul>
+				<li><a href="#" onclick="togglePop()" class="about">About</a></li>
+			</ul>
+			<img src="profile.png" class="user-pic" onclick="toggleMenu()"> 
+		
+    <!--Dropdown menu for profile-->		
+		<div class="sub-menu-wrap" id="subMenu">
+		<div class="sub-menu">
+		<div class="user-info">
+		<img src="profile.png">
+		<h3> Hiram Borrowing </h3>
+		</div>
+		<hr>
+		
+		<a href="#" class="sub-menu-link">
+			<img src="profile.png" onclick="togglePop2()">
+			<p onclick="togglePop2()"> Edit Profile</p>
+			<span>></span>
+		</a>
+
+		<a href="#" class="sub-menu-link">
+			<img src="help.jpg" onclick="togglePop1()">
+			<p onclick="togglePop1()"> Help & Support</p>
+			<span>></span>
+		</a>
+		<a href="#" class="sub-menu-link">
+			<img src="logout.png">
+			<p> Logout</p>
+			<span>></span>
+		</a>
+		</div>
+		</div>
+		</nav>
+	</div>
+	
+	<!-- Pop-up for About page -->
+	<div class="aboutPop"id="popup"> 
+	<div class="overlay" onclick="togglePop()"> </div>
+	<div class="content">
+	<div class="close1" onclick="togglePop()"> &times; </div>
+	<h1> About HIRAM </h1>
+	<p>At HIRAM, we aim to foster a supportive and resourceful environment by encouraging sharing and collaboration among students. <br>
+	   Our goal is to make borrowing easy, efficient, and accessible for everyone. <br>
+       <br>
+       Why Choose HIRAM? <br>
+       User-Friendly: Our platform is designed with simplicity in mind, allowing you to find and borrow items effortlessly. <br>
+	   <br>
+       Community Driven: Connect with classmates and faculty who are ready to lend a helping hand. <br>
+	   <br>
+       Sustainable Sharing: Reduce waste and promote sustainability by borrowing instead of buying. <br>
+	   <br>
+       Join us in creating a more connected and resourceful school community. Start borrowing today with HIRAM!</p>
+	</div>
+	</div>
+	
+	<!-- Pop-up for Help and support page -->
+	<div class="learnPop" id="popup1"> 
+	<div class="overlay1" onclick="togglePop1()"> </div>
+	<div class="content1">
+	<div class="close2" onclick="togglePop1()"> &times; </div>
+	<h1> Learn about HIRAM </h1>
+	</div>
+	</div>
+
+    <!-- Pop-up for Edit profile page -->
+	<div class="editPop" id="popup2"> 
+	<div class="overlay2" onclick="togglePop2()"> </div>
+	<div class="content2">
+	<div class="close3" onclick="togglePop2()"> &times; </div>
+	<h1> Edit Profile </h1>
+	</div>
+	</div>
+	
+    <!--Logo and options-->
+    <div class="Logo">
+        <img src="Hiram_Logo1.png" class="logoPic">
+        </div>
+		
+     
+    <button class="Item1" onclick="formModal('sports')">
+	<img src="sport.png" class="sportPic"> <br> SPORTS GEARS
+	</button>
+
+    <button class="Item2" onclick="formModal('school')">
+	<img src="school.png" class="schoolPic"> <br> SCHOOL ITEMS
+	</button>
+	
+    <button class="Item3" onclick="formModal('canteen')">
+	<img src="canteen.png" class="canteenPic"> <br> CANTEEN UTENSILS
+	</button>
+    
+    <button class="Item4" onclick="formModal('library')">
+	<img src="library.png" class="libraryPic"> <br> <br>LIBRARY EQUIPMENTS
+	</button>
+    </div>
+    
+	<!-- layout pop-up window of borrowing form-->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>BORROWING FORM</p>
+            <div class="dropdown">
+                <div class="select">
+                    <span class="selected">Select an item</span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menu">
+                
+                </ul>
+				<button class="confirmation" onclick="confirmButton"> Borrow </button>
+            </div>
+        </div> 
+    </div>
+
+<script>
+//About pop-up script
+function togglePop(){
+ document.getElementById("popup").classList.toggle("active");
+}
+
+//Learn pop-up script
+function togglePop1(){
+ document.getElementById("popup1").classList.toggle("active1");
+}
+
+//Edit Profile pop-up script
+function togglePop2(){
+ document.getElementById("popup2").classList.toggle("active2");
+}
+
+
+//Profile header script
+let subMenu = document.getElementById("subMenu");
+	
+	function toggleMenu(){
+		subMenu.classList.toggle("open-menu");
+	}
+
+//Javascript for window pop-up of barrowing form
+var modal = document.getElementById("formModal"); // Get the modal element
+var span = document.getElementsByClassName("close")[0]; // Get the <span> element that closes the modal
+
+function formModal(itemType) { // Function to open the modal
+    modal.style.display = "block";
+    
+    const menu = modal.querySelector('.menu');
+    menu.innerHTML = ''; // Clear existing options
+
+    let options;
+    switch (itemType) { // ALL ITEM LISTS
+        case 'sports':
+            options = ['Soccer Ball', 'Basketball', 'Tennis', 'Paddle'];
+            break;
+        case 'school':
+            options = ['Calculator', 'Caligraphy Pen', 'Paint', 'Pencil Sharpener'];
+            break;
+        case 'canteen':
+            options = ['Plates', 'Cups', 'Spoon and Fork'];
+            break;
+        case 'library':
+            options = ['Books', 'Speaker', 'Projector', 'HDMI cable', 'VGA(female) to HDMI(male) adapter'];
+            break;
+        default:
+            options = [];
+    }
+
+    // Populate dropdown with new options
+    options.forEach(option => {
+        const li = document.createElement('li');
+        li.innerText = option;
+        li.addEventListener('click', () => {
+            const selected = menu.previousElementSibling.querySelector('.selected'); // Correctly scope to the selected element
+            selected.innerText = li.innerText; // Update selected text
+            const allOptions = menu.querySelectorAll('li');
+            allOptions.forEach(opt => opt.classList.remove('active'));
+            li.classList.add('active');
+        });
+        menu.appendChild(li);
+    });
+}
+
+span.onclick = function() { // Function to close the modal when user clicks the 'X' button
+    modal.style.display = "none";
+}
+
+// JavaScript for dropdown item list in borrowing form
+const dropdown = document.querySelector('.dropdown'); // Get the dropdown once, as there's only one in the modal
+const select = dropdown.querySelector('.select');
+const caret = dropdown.querySelector('.caret');
+const menu = dropdown.querySelector('.menu');
+
+select.addEventListener('click', () => {
+    select.classList.toggle('select-clicked');
+    caret.classList.toggle('caret-rotate');
+    menu.classList.toggle('menu-open');
+});
+</script>
+</html> 
