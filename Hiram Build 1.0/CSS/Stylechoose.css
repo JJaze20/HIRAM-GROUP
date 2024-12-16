@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Set default font for the whole document */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.center {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning to be perfectly centered */
+    width: 400px; /* Fixed width for the center container */
+    background: white; /* White background for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05); /* Soft shadow effect */
+}
+
+.center h1 {
+    text-align: center; /* Center the heading text */
+    padding: 20px 0; /* Vertical padding */
+    border-bottom: 1px solid silver; /* Bottom border for the heading */
+}
+
+.center form {
+    padding: 0 40px; /* Horizontal padding for the form */
+    box-sizing: border-box; /* Include padding in the total width/height */
+}
+
+/* .txt_field class for input fields */
+.txt_field {
+    position: relative; /* Positioning context for absolutely positioned children */
+    margin: 30px 0; /* Vertical spacing between fields */
+}
+
+/* Style for input elements within .txt_field */
+.txt_field input {
+    width: 100%; /* Full width of the container */
+    padding: 0 5px; /* Horizontal padding inside input */
+    height: 40px; /* Fixed height for input */
+    font-size: 16px; /* Font size for input text */
+    border: none; /* No border */
+    background: none; /* No background */
+    outline: none; /* Remove outline on focus */
+    text-decoration: none; /* Ensure no underline on input text */
+}
+
+/* Label styling within .txt_field */
+.txt_field label {
+    position: absolute; /* Absolute positioning for label */
+    top: 50%; /* Vertically center the label */
+    left: 5px; /* Padding from the left */
+    color: #adadad; /* Light gray color */
+    transform: translateY(-50%); /* Center the label vertically */
+    font-size: 16px; /* Font size for the label */
+    pointer-events: none; /* Prevent label from capturing mouse events */
+    transition: .5s; /* Smooth transition for movement */
+    text-decoration: none; /* Ensure no underline on label */
+}
+
+/* Underline animation for input focus */
+.txt_field span::before {
+    content: ''; /* No content, used for styling */
+    position: absolute; /* Absolute positioning for the underline */
+    top: 40px; /* Position just below the input field */
+    left: 0; /* Align to the left */
+    width: 0%; /* Initial width of the underline */
+    height: 2px; /* Height of the underline */
+    background: #2691d9; /* Color of the underline */
+    transition: .5s; /* Smooth transition for width change */
+}
+
+/* Move label up and change color on input focus or valid state */
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+    top: -5px; /* Move the label above the input */
+    color: #2691d9; /* Change label color */
+}
+
+/* Expand underline on input focus or valid state */
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+    width: 100%; /* Full width on focus */
+}
+
+/* Styles for borrower and lender elements */
+.borrower, .lender {
+    width: 48%; /* Adjust width for side-by-side layout */
+    height: auto; /* Height adjusts based on content */
+    padding: 10px; /* Padding for better spacing */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.borrower:hover {
+    background-color: #f9f9f9; /* Background change on hover for borrower */
+}
+
+.lender:hover {
+    background-color: #f9f9f9; /* Background change on hover for lender */
+}
+
+/* Centered role text styling */
+.roletxt {
+    text-align: center; /* Center text */
+    font-size: 16px; /* Font size */
+    color: #666666; /* Text color */
+}
+
+/* Styles for the signup link */
+.signup_link {
+    margin: 30px 0; /* Vertical spacing */
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Font size */
+    color: #666666; /* Text color */
+}
+
+.signup_link a {
+    color: #2691d9; /* Link color */
+    text-decoration: none; /* Remove underline from link */
+}
+
+/* Color wheel styling */
+.colorwheel {
+    position: absolute; /* Positioning for the color wheel */
+    width: 5%; /* Width of the color wheel */
+    height: 10%; /* Height of the color wheel */
+    top: 0%; /* Positioning at the top */
+    right: 0%; /* Positioning at the right */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.colorwheel:hover {
+    background: #FFFF; /* Change background on hover */
+}
